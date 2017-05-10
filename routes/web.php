@@ -24,3 +24,5 @@ Route::get('/logout','RegisterController@logout');
 Route::get('/verify/{email}-{token}','RegisterController@verify');
 
 Route::get('/admin','Admin\AdminController@admin');
+Route::get('/admin/newpost','Admin\PostsController@newpost');
+Route::get('/admin/addpost','Admin\PostsController@addpost');
