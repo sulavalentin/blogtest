@@ -3,26 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function home()
     {
-        $this->middleware('auth');
+        $posts=Post::orderBy("id","desc")->paginate(5);
+        return view("welcome",["posts"=>$posts]);
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function post($id)
     {
-        return view('welcome');
+        $post=Post::where("id","=",$id)->first();
+        $similar=Post::where("id","<>",$id)->inRandomOrder()->take(6)->get();
+        return view("post",["post"=>$post,
+                            "similar"=>$similar]);
     }
 }

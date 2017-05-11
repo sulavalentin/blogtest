@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Post;
 
 class AdminController extends Controller
 {
@@ -12,6 +12,7 @@ class AdminController extends Controller
         if(session("admin")==0){
             return redirect()->back();
         }
-        return view("admin.home");
+        $posts=Post::orderBy("id","desc")->paginate(5);
+        return view("admin.home",["posts"=>$posts]);
     }
 }

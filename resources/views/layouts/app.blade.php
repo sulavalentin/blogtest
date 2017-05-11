@@ -72,10 +72,13 @@
                 </div>
             </div>
         </nav>
-
+    <div style="color:black;">
         @yield('content')
     </div>
-
+    </div>
+    <footer style='height: 200px;'>
+        
+    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

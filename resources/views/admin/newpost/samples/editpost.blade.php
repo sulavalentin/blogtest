@@ -1,17 +1,17 @@
 @extends('admin.newpost.samples.head')
 @section('content')
+@if(!empty($post) && count($post)>0)
 <main>
     <div class="adjoined-bottom">
         <div class="container">
             <h3 class="text-center" style="margin:0px 0px 0px 0px; color:black;">Titlu</h3>
-            <input type="text" id="title" class="form-control" style="margin-bottom: 15px;"/>
+            <input type="text" id="title" class="form-control" style="margin-bottom: 15px;" value="{{$post->title}}"/>
         </div>
         <div class="grid-container">
             <div class="grid-width-100">
                 <div id="editor">
                     <body>
-                        <textarea id="editor"></textarea>
-                        <div id="preview"></div>
+                        <div id="preview">{!!$post->content!!}</div>
                     </body>
                 </div>
             </div>
@@ -26,7 +26,6 @@
 <script>
     initSample();
     /*Action when click button with id save*/
-    CKEDITOR.instances.editor.setData( '<p>Aici scriti textul.</p>' );
     $("body").on("click","#save",function(){
         var title=$("#title").val();
         var content = CKEDITOR.instances.editor.getData();
@@ -39,12 +38,13 @@
                 $("#save").button("loading");
                 $.ajax({  
                     type: 'POST',  
-                    url: "{{URL('/admin/addpost')}}", 
+                    url: "{{URL('/admin/edit')}}", 
                     data: 
                         { 
                             _token: "{{ csrf_token() }}",
                             title:title,
-                            content:content
+                            content:content,
+                            id:"{{$post->id}}"
                         },
                     success: function() {
                         location.href="{{URL('/admin')}}";
@@ -60,4 +60,7 @@
     });
 	
 </script>
+@else
+    <h1>Nu exista acest post</h1>
+@endif
 @endsection
