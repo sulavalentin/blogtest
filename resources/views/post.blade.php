@@ -28,13 +28,18 @@
                     @endforeach
                 </ul>
             @endif
-            
             <h3>Comentarii</h3>
-            <form method="post" action="{{URL('addcomment')}}" name="comments">
-                <textarea name="comment" class="form-control"></textarea>
-                <br>
-                <button type="submit" name="submit" class="btn btn-primary">Comenteaza</button>
-            </form>
+            @if(Session::has('name') && Session::has('id'))
+                <form method="post" action="{{URL('addcomment')}}" name="comments">
+                    <textarea name="comment" class="form-control"></textarea>
+                    <br>
+                    <button type="submit" name="submit" class="btn btn-primary">Comenteaza</button>
+                </form>
+            @else
+                <a href="{{ URL('login') }}">Logheazate</a> sau 
+                <a href="{{ URL('register') }}">Inregistreazate</a> pentru a lasa un comentariu
+            @endif
+            
             <ul id="comment_list">
                 @if(!empty($comments) && count($comments)>0)
                     @foreach($comments as $i)
