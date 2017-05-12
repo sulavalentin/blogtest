@@ -13,8 +13,9 @@
             </p>
             
         </div>
-        @endforeach
         {{$posts->links()}}
+        @endforeach
+        
     @else
     <h1 class='text-center'>Nu sunt bloguri</h1>
     @endif

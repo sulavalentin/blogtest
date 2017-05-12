@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+    @include('admin.menu')
     <div class="container" style='color:black;'>
         <a href="{{URL('admin/newpost')}}" class="btn btn-primary pull-right">Add new post</a>
         <div class="clearfix" style='margin-bottom:15px;'></div>
@@ -15,7 +15,10 @@
                 <a href='{{URL("/admin/delete/".$i->id)}}' class='btn btn-danger'>Delete</a>
             </div>
             @endforeach
+            {{$posts->links()}} 
+        @else
+        <h1>Nu sunt bloguri</h1>
         @endif
-        {{$posts->links()}}
+        
     </div>
 @endsection

@@ -2,7 +2,7 @@
 @section('content')
 @if(!empty($post) && count($post)>0)
 <main>
-    <div class="adjoined-bottom">
+    <div class="">
         <div class="container">
             <h3 class="text-center" style="margin:0px 0px 0px 0px; color:black;">Titlu</h3>
             <input type="text" id="title" class="form-control" style="margin-bottom: 15px;" value="{{$post->title}}"/>
@@ -11,7 +11,7 @@
             <div class="grid-width-100">
                 <div id="editor">
                     <body>
-                        <div id="preview">{!!$post->content!!}</div>
+                        {!!$post->content!!}
                     </body>
                 </div>
             </div>

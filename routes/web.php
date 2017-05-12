@@ -31,3 +31,15 @@ Route::get('/admin/edit/{id}','Admin\PostsController@getedit');
 Route::post('/admin/edit','Admin\PostsController@postedit');
 Route::get('/admin/delete/{id}','Admin\PostsController@getdelete');
 Route::post('/admin/delete/{id}','Admin\PostsController@postdelete');
+/*commnets*/
+Route::get('/admin/comments','Admin\CommentsController@getcomments');
+Route::post('/admin/acceptcomment/{id}','Admin\CommentsController@acceptcomment');
+Route::post('/admin/refusecomment/{id}','Admin\CommentsController@refusecomment');
+Route::get('/admin/deletecomment/{id}','Admin\CommentsController@getdeletecomment');
+Route::post('/admin/deletecomment/{id}','Admin\CommentsController@postdeletecomment');
+/*Add comment*/
+Route::post('addcomment','HomeController@addcomment');
+/*Users routes*/
+Route::get('/admin/users','Admin\UsersController@getusers');
+Route::post('/admin/upadmin/{id}','Admin\UsersController@upadmin');
+Route::post('/admin/downadmin/{id}','Admin\UsersController@downadmin');

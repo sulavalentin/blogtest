@@ -42,6 +42,7 @@ class RegisterController extends Controller
         ]);
         $email=$request->email;
         $token=str_random(32);
+        /*Create new user*/
         $user=new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -75,7 +76,7 @@ class RegisterController extends Controller
         return view("email.verified",["success"=>"Email confirmed"]);
     }
     public function logout(){
-        session()->forget('nume');
+        session()->forget('name');
         session()->forget('id');
         session()->forget('admin');
         return redirect('/');

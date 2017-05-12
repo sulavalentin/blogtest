@@ -25,6 +25,61 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
         </style>
 </head>
 <body id="main">
+    <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        Blog
+                    </a>
+                    @if(Session::has('admin') && Session::get('admin')==1)
+                        <a class="navbar-brand" href="{{ url('/admin') }}">
+                            Admin
+                        </a>
+                    @endif
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                        &nbsp;
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @if(Session::has('name') && Session::has('id'))
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Session::has('name') }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ URL('logout') }}">
+                                            Logout
+                                        </a>
+                                            
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <li><a href="{{ URL('login') }}">Login</a></li>
+                            <li><a href="{{ URL('register') }}">Register</a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+        </nav>
     @yield('content')
     <footer class="footer-a grid-container">
         <div class="grid-container">

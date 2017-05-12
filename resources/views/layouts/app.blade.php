@@ -19,6 +19,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -38,6 +39,11 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Blog
                     </a>
+                    @if(Session::has('admin') && Session::get('admin')==1)
+                        <a class="navbar-brand" href="{{ url('/admin') }}">
+                            Admin
+                        </a>
+                    @endif
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -79,7 +85,5 @@
     <footer style='height: 200px;'>
         
     </footer>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

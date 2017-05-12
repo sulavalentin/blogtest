@@ -1,7 +1,7 @@
 @extends('admin.newpost.samples.head')
 @section('content')
 <main>
-    <div class="adjoined-bottom">
+    <div class="">
         <div class="container">
             <h3 class="text-center" style="margin:0px 0px 0px 0px; color:black;">Titlu</h3>
             <input type="text" id="title" class="form-control" style="margin-bottom: 15px;"/>
